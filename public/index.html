@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Wax bot</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/x-icon" href="/js/favicon.ico">
+  <script src='/js/waxjs.js'></script>
+  <script src="/js/tasktimer.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity=
+        "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+        crossorigin="anonymous">
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-5-strong">
+    <ul class="nav navbar-nav nav-flex ml-auto">
+      <li class="nav-item" style="display: none;"></li>
+      <li class="nav-item"><span id="waxthb" style="background-color: green; color: honeydew;"></span></li>
+    </ul>
+  </nav>
+  <div class="container">
+
+    <b><font size='+4'><span id='name_site'></span></font></b><br>
+	<span id='version_up'></span>&nbsp;<font size='+2'><b><span class='badge bg-warrning'> | Donate : edo.i.c.wam</span></b></font><br><br>
+	<a href='https://tlmminer.com/AutoClickApprove.rar' target='_blank'><img src='js/approve.png' width='100'></a>&nbsp;&nbsp;<a href='https://wallet.wax.io' target='_blank'><img src='js/wax.png' width='100'></a>&nbsp;&nbsp;<a href='https://wax.alcor.exchange' target='_blank'><img src='js/alcor.png' width='100'></a>&nbsp;&nbsp;<a href='https://play.farmersworld.io' target='_blank'><img src='js/farm.png' width='100'></a>&nbsp;&nbsp;<a href='https://play.goldmand.io' target='_blank'><img src='js/goldm.png' width='100'></a>&nbsp;&nbsp;<a href='https://officeland.io/game' target='_blank'><img src='js/office.png' width='100'></a>&nbsp;&nbsp;<a href='https://game.nftpanda.space' target='_blank'><img src='js/panda.png' width='100'></a><br><br>
+	
+	<b>RPC ENDPOINT : </b><select id='end_point' name='end_point' class='css-input-all'><option value='https://chain.wax.io'>chain.wax.io</option><option value='http://api.waxsweden.org'>api.waxsweden.org</option><option value='https://wax.eosphere.io'>wax.eosphere.io</option><option value='http://wax.eosdublin.io'>wax.eosdublin.io</option><option value='http://wax.eosusa.news'>wax.eosusa.news</option><option value='http://wax.greymass.com'>wax.greymass.com</option><option value='https://wax.blokcrafters.io'>wax.blokcrafters.io</option><option value='http://apiwax.3dkrender.com'>apiwax.3dkrender.com</option><option value='http://waxapi.ledgerwise.io'>waxapi.ledgerwise.io</option><option value='http://api.wax.greeneosio.com'>api.wax.greeneosio.com</option><option value='http://hyperion-wax-mainnet.wecan.dev'>hyperion-wax-mainnet.wecan.dev</option><option value='http://history-wax-mainnet.wecan.dev'>history-wax-mainnet.wecan.dev</option><option value='https://api.wax.greeneosio.com'>api.wax.greeneosio.com</option></select>&nbsp;<button type='button' class='btn-css' onclick='save_setting();'>SAVE ALL</button>
+	
+	<br>
+	<input id="lineToken" class='css-input-all' placeholder="LINE TOKEN HERE" style='width:25em'>&nbsp;<button type="button" class='btn-css' onclick='lineNotifyTest()'>TEST LINE NOTIFY</button>
+	<button id="login" hidden onclick='login();'>WAX Login</button>
+	<input id="updater" hidden><input id="message" style="display:none;"><br>
+	<h5 id="usage"></h5>
+    <hr color='grey'>
+    <!-- <label>fail:</label> -->
+    <input type="checkbox" id="fail" value="fail" style="display:none;"><button id="sign" hidden onclick=sign() >Sign transaction</button>
+	<label>Other Message</label><br>
+	<textarea id="log_other" name="log_other" rows="5" cols='100' class='css-input1' disabled=''></textarea><br>
+	<label>Farmersworld Claims</label><br>
+	<textarea id="log_farm" name="log_farm" rows="5" cols='100' class='css-input1' disabled=''></textarea><br>
+	<!-- <b><font size='+1'>MESSAGE : </font><span id='log'></span></b> -->
+	<!-- <label>Current Message</label> -->
+    <h3 id="current" style="display:none;"></h3>
+    <hr color='grey'>
+    <label class="switch"><input type="checkbox" id="fwCheck"><span class="slider round"></span></label>&nbsp;&nbsp;<label><b>FarmersWorld</b></label>
+	<!-- <input type="checkbox" id="fwCheck" checked="true"></input> -->&nbsp;<div class='badge rounded-pill bg-dark text-light'><b>Fee: <span id='fee'></span>%</b></div><label id="fwBalance"></label><br><span id='fwoutgame'></span><br><span id='fwingame'></span>
+	<hr>
+	<font size='+1'><b>SETTING</b></font><br>
+	<font size='-1'><b>REPAIR: </b><input type='number' placeholder='Ex: 30'  class='css-input-all' style='width:5em' id='repair_set' value='1'> | <b>RECOVERY: </b><input type='number' placeholder='Ex: 30'  class='css-input-all' style='width:5em' id='recov_set' value='60'><b>@</b><input type='number' name='max_e' placeholder='Ex: 200'  class='css-input-all' style='width:5em' id='recov_set_value' value='500' min='1' max='500'><br>
+	<!-- <b>FWF DEPOSIT: </b><input type='number' placeholder='Ex: 30' class='css-input' id='fwf_set' value='20'> | <b>FWG DEPOSIT: </b><input type='number' placeholder='Ex: 30' class='css-input' id='fwg_set' value='20'> -->
+	<hr>
+	<font size='+1'><b>MANUAL</b></font><br>
+	<label class="switch"><input type="checkbox" id="fwCrops"><span class="slider round"></span></label>&nbsp;&nbsp;<label><b>FarmPlot</b></label> | <label class="switch"><input type="checkbox" id="fwCoops"><span class="slider round"></span></label>&nbsp;&nbsp;<label><b>Coop</b></label><!-- | <label class="switch"><input type="checkbox" id="fwCowshed"><span class="slider round"></span></label>&nbsp;&nbsp;<label><b>Cowshed</b></label>--><br>
+	<label class="switch"><input type="checkbox" id="fwCrops_build"><span class="slider round"></span></label>&nbsp;&nbsp;<label><b>Build FarmPlot</b></label> | <label class="switch"><input type="checkbox" id="fwCoops_build"><span class="slider round"></span></label>&nbsp;&nbsp;<label><b>Build Coop</b></label> | <label class="switch"><input type="checkbox" id="fwCowshed_build"><span class="slider round"></span></label>&nbsp;&nbsp;<label><b>Build Cowshed</b></label><br>
+	<input type='number' class='css-input-all' placeholder='Ex: 1.7569' id='deposit'><select id='de_tokens' name='de_tokens' class='css-input-all'><option value='FWG'>FWG</option><option value='FWF'>FWF</option><option value='FWW'>FWW</option></select><button type='button' class='btn-css' onclick='deposit();'>DEPOSIT</button><br>
+    <input type='number' class='css-input-all' placeholder='Ex: 1.7569' id='with_dr'><select id='wi_tokens' name='wi_tokens' class='css-input-all'><option value='WOOD'>WOOD</option><option value='FOOD'>FOOD</option><option value='GOLD'>GOLD</option></select><button type='button' class='btn-css' onclick='with_dr();'>WITHDRAW</button><br>
+	<input type='number' class='css-input-all' placeholder='Ex: 1.7569' id='sell'><select id='se_tokens' name='se_tokens' class='css-input-all'><option value='FWW'>FWW</option><option value='FWF'>FWF</option><option value='FWG'>FWG</option></select><button type='button' class='btn-css' onclick='sell();'>SELL TOKENS</button><br>
+	<input type='number' class='css-input-all' placeholder='Ex: 1.115 ..by WAX' id='buy'><select id='by_tokens' name='by_tokens' class='css-input-all'><option value='FWG'>FWG</option><option value='FWF'>FWF</option><option value='FWW'>FWW</option></select><button type='button' class='btn-css' onclick='buy();'>BUY TOKENS</button><br>
+	<input type='number' class='css-input-all' placeholder='Ex : 100' id='fw_at_tran_in' style='width:5em'> to <input class='css-input-all' placeholder='ex : user.wax' id='tranfer_coins'><button type='button' class='btn-css' onclick='tranfer_coins();'>TRANFER COINS</button><br>
+	<input type='number' class='css-input-all' placeholder='Ex : 100' id='fw_at_tran_in1' style='width:5em' min='1' max='1000'><button type='button' class='btn-css' onclick='withdraw_coins();'>WITHDRAW COINS</button><br>
+	<button type='button' class='btn-css' onclick='burn();'>BURN ALL CORN BARREY MILK</button></font>
+	
+	<hr>
+    <h5 id="resFarmersworld"></h5>
+    <hr color='grey'>
+    <label class="switch"><input type="checkbox" id="pandaCheck"><span class="slider round"></span></label>&nbsp;&nbsp;<label><b>nftPanda</b></label><!-- <input type="checkbox" id="pandaCheck" checked="true"> --></input><label id="pandaBalance"></label>
+    <br><font size='-1'><select id="pandaFoodUnit" class='css-input-all'></select><select id="pandaFoodList" class='css-input-all'></select> <button type="button" class='btn-css' onclick='pandaBuyFood();' id="pandaBuyFoodButton">Buy</button></font>
+    <h5 id="resnftPanda"></h5>
+    <hr color='grey'>
+    <label class="switch"><input type="checkbox" id="officelandCheck"><span class="slider round"></span></label>&nbsp;&nbsp;<label><b>Officeland</b></label><!-- <input type="checkbox" id="officelandCheck" checked="true"> --></input><label id="officelandBalance"></label><br>
+	<font size='-1'><b>SLEEP: </b><input type='number' placeholder='Ex: 70' class='css-input-all' style='width:4em' id='OfficeSleep' value='70' min='0' max='100'><b> BULK COFFEE: </b><select id='bulk_coffee' class='css-input-all' name='bulk_coffee'><option value='1'>Latte (S5-10%, R1-10%) 3 OCOIN/1</option><option value='2'>Cappuccino (S15-20%, R5-10%) 8 OCOIN/1</option><option value='3'>Espresso (S8-12%, R10-20%) 10 OCOIN/1</option><option value='4'>Macchiato (S5-10%, R15-25%) 12 OCOIN/1</option><option value='5'>Affogato (S3-8%, R25-35%) 15 OCOIN/1</option></select><button type='button' class='btn-css' onclick='bulk_coffee();'>BULK COFFEE</button>
+    <h5 id="resofficeland"></h5>
+    <hr>
+    <label>Transaction Results</label><br>
+    <h5 id="response" hidden></h5>
+</div>
+<button type="button" class="regular" name="edit" id="submit" style="display:none;"></button>
+<!--<script type="text/javascript" src="js/bot.js"></script>-->
+<script type="text/javascript" src="js/bot.js"></script>
+</body>
+</html>

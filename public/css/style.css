@@ -1,0 +1,131 @@
+body {
+    background: #000000;
+    font-family: #system-ui;
+    color: #FFFFFF;
+  }
+h1 {
+    /* color: blue; */
+  }
+p {
+    /* color: red; */
+  }
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  transform: translateX(18px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+textarea {
+  resize: none;
+}
+
+.css-input1 {
+     padding: 10px;
+     font-size: 14px;
+     border-width: 1px;
+     border-color: #CCCCCC;
+     background-color: #000000;
+     color: #FFFFFF;
+     border-style: solid;
+     border-radius: 10px;
+     box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+     text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+}
+ .css-input1:focus {
+     outline:none;
+}
+
+.btn-css {
+	box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+	background-color:#768d87;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+	padding:3px 5px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
+}
+.btn-css:hover {
+	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+	background-color:#6c7c7c;
+}
+.btn-css:active {
+	position:relative;
+	top:1px;
+}
+
+.css-input-all {
+     padding: 1px;
+     font-size: 14px;
+     border-width: 1px;
+     border-color: #CCCCCC;
+     background-color: #000000;
+     color: #FFFFFF;
+     border-style: solid;
+     border-radius: 5px;
+     box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+}
+ .css-input-all:focus {
+     outline:none;
+}

@@ -1,0 +1,9 @@
+v2.6.1
+ - update farmersworld
+	- function tranfers farmercoins
+v2.6
+ - update farmersworld
+	- crops claim all at one click
+	- fix bug save setting
+ - update nftpanda
+	- claim all at one click
